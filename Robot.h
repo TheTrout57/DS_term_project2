@@ -234,6 +234,13 @@ class Robot{
                 steps++;
             }
         }
+
+        if (!steps){
+            Position s;
+            s.r = currentRow;
+            s.c = currentCol;
+            q.Push(s);
+        }
         
         ofile << steps << endl;
         Position p;
