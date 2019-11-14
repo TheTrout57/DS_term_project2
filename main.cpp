@@ -8,7 +8,9 @@ int main()
 {
     int row, col, battery;
     fstream file;
+    ofstream ofile;
     file.open("floor.data", ios::in);
+    ofile.open("final.path", ios::out);
     file >> row >> col >> battery;
 
     char** matrix = new char* [row];
@@ -22,6 +24,6 @@ int main()
     }
     
     Robot s(row, col, battery, matrix);
-    s.clean();
+    s.clean(ofile);
     return 0;
 }

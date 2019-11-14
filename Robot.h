@@ -2,6 +2,7 @@
 #include "Queue.h"
 #include <stdlib.h>  
 #include <iomanip>
+#include <fstream>
 #define N 1000000
 
 using namespace std;
@@ -196,15 +197,9 @@ class Robot{
         heap[1] = heap[heapSize--];   
         heaptify(1);
     }
-    void clean(){
+    void clean(ofstream &ofile){
         shortestPath();
         buildHeap();
-        for (int i = 0; i < row; i++){
-            for (int j = 0; j < col; j++){
-                cout << setw(8) << dist[i][j];
-            } 
-            cout << endl;
-        }
 
         currentRow = R_row;
         currentCol = R_col;
@@ -238,23 +233,14 @@ class Robot{
                 q.Push(p);
                 steps++;
             }
-            
         }
         
-        
-        for (int i = 0; i < row; i++){
-            for (int j = 0; j < col; j++){
-                cout << floor[i][j];
-            }
-            cout << endl;
-        }
-        cout << endl;
-        cout << steps << endl;
+        ofile << steps << endl;
         Position p;
         while (!q.isEmpity()){
             p = q.Front();
             q.Pop();
-            cout << p.r << " " << p.c << endl;
+            ofile << p.r << " " << p.c << endl;
         }
     }
     private:
