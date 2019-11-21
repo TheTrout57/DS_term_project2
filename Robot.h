@@ -119,7 +119,7 @@ class Robot{
         dist[R_row][R_col] = 0;
         
         int v = cleanable();
-        for (int i = 0; i < v - 2; i++){
+        for (int i = 0; i < v - 1; i++){
             Position u = choose();
             s[u.r][u.c] = true;
             
@@ -207,7 +207,6 @@ class Robot{
         s.r = currentRow;
         s.c = currentCol;
         q.Push(s);
-
         while (heapSize){
             int usage = 0;
             Position z = extractMin();
